@@ -1,0 +1,5 @@
+/.venv
+/.idea
+/__pycache__
+testes_tela.py
+config.ini
