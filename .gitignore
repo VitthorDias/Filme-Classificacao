@@ -2,4 +2,5 @@
 /.idea
 /__pycache__
 testes_tela.py
+teste_tela_main.py
 config.ini
