@@ -2,6 +2,11 @@ import configparser
 import search
 import testes_tela
 
+def pesquisa_tmdb(text = ""):
+    response = search.busca(text, autorizacao)
+
+    return response
+
 
 url = "https://api.themoviedb.org/3/authentication"
 
@@ -12,6 +17,6 @@ config.read("config.ini")
 chave = config.get('api', 'chave')
 autorizacao = config.get('api', 'autorizacao')
 
-response = search.busca("Annabele", autorizacao)
 
-testes_tela.tela(response)
+
+#testes_tela.tela(pesquisa_tmdb("velozes"))

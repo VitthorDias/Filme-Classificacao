@@ -1,7 +1,7 @@
 /.venv
 /.idea
 /__pycache__
-testes_tela.py
-teste_tela_main.py
-teste_tela_main1.py
-config.ini
+/testes_tela.py
+/teste_tela_main.py
+/config.ini
+/testes_tela_main1.py
