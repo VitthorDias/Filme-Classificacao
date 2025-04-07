@@ -145,15 +145,17 @@ def tela_pesquisa(page: ft.Page):
 
     container_stack = ft.Stack(
         controls = [
-            ft.Image(
-                src = f"/imagens/bg_cinema.jpg",
-                fit = ft.ImageFit.COVER,
-                opacity = 0.1,
-                expand = True
-            ),
             container_main,
         ],
         expand = True,
+    )
+
+    bg_img = ft.BoxDecoration(
+        image=ft.DecorationImage(
+            src="imagens/bg_cinema.jpg",
+            fit=ft.ImageFit.COVER,
+            opacity=0.7
+        )
     )
 
     return ft.View(
@@ -163,4 +165,6 @@ def tela_pesquisa(page: ft.Page):
         ],
         horizontal_alignment = "center",
         scroll = "auto",
+        decoration = bg_img,
+        bgcolor = ft.Colors.with_opacity(0.8, "black")
     )

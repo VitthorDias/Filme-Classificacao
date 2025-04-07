@@ -1,5 +1,6 @@
 import flet as ft
 from search_tela import tela_pesquisa
+from lista_filmes import tela_lista
 
 bg_principal = "#090B0D"
 txt_color = "#E1F0EB"
@@ -53,7 +54,7 @@ def main(page: ft.Page):
         padding = 20,
         width = page.width * 0.6,
         ink = True,
-        on_click = lambda e: print("Listando"),
+        on_click = lambda e: page.go("/lista"),
     )
     # page.add(container_opcao2)
 
@@ -77,11 +78,13 @@ def main(page: ft.Page):
         # Tela de Pesquisa
         elif page.route == "/pesquisar":
             page.views.append(tela_pesquisa(page))
+        elif page.route == "/lista":
+            page.views.append(tela_lista(page))
 
         page.update()
 
     page.on_route_change = route_change
-    page.go(page.route)
+    page.go("/")
 
 if __name__ == '__main__':
     ft.app(target=main, assets_dir=".")
