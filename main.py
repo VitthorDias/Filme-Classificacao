@@ -16,7 +16,3 @@ config.read("config.ini")
 
 chave = config.get('api', 'chave')
 autorizacao = config.get('api', 'autorizacao')
-
-
-
-#testes_tela.tela(pesquisa_tmdb("velozes"))

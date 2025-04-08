@@ -11,6 +11,14 @@ def main(page: ft.Page):
     page.vertical_alignment = "start"
     page.horizontal_alignment = "center"
 
+    bg_img = ft.BoxDecoration(
+        image = ft.DecorationImage(
+            src = "imagens/bg_main.jpg",
+            fit = ft.ImageFit.COVER,
+            opacity=0.7,
+        )
+    )
+
     # Container do Titulo
     titulo = ft.Text(
         "Sessão Cinema - V e S ❤️",
@@ -71,7 +79,9 @@ def main(page: ft.Page):
                         container_opcao1,
                         container_opcao2,
                     ],
-                    horizontal_alignment="center",
+                    horizontal_alignment = "center",
+                    decoration = bg_img,
+                    bgcolor = ft.Colors.with_opacity(0.7, "black")
                 )
             )
 

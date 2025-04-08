@@ -1,15 +1,27 @@
 import flet as ft
 from main import pesquisa_tmdb
+import json
 
 def tela_pesquisa(page: ft.Page):
-    def button_select(id_filme = int):
-        filmes_selecionados.append(id_filme)
-        print(filmes_selecionados)
+    # Função para selecionar o(s) filme(s) escolhidos
+    def button_select(dados):
+        filmes_selec = {}
+        for chave, valor in dados.items():
+            if chave != "id":
+                filmes_selec[chave] = valor
+        filmes[dados["id"]] = filmes_selec
+        filmes_json = json.dumps(filmes, indent=True, ensure_ascii=False)
 
+        with open("base/filmes.json", "w+", encoding='utf-8') as file:
+            file.write(filmes_json)
+
+
+    # Cria os containers com os resultados da pesquisa dos filmes 
     def button_search(e):
         txt.value = label_pesquisa.value
         result = pesquisa_tmdb(txt.value)
 
+        # Limpa a lista de filmes pesquisados para mostrar nova pesquisa
         while container_lista.controls:
             container_lista.controls.pop()
 
@@ -19,45 +31,61 @@ def tela_pesquisa(page: ft.Page):
 
             botao_selecionar = ft.ElevatedButton(
                 "Selecionar Filme",
-                on_click = lambda e, id_f = dados["id"]: button_select(id_f),
+                on_click = lambda e, id_f = dados: button_select(id_f),
             )
 
-            lista = ft.Container(
-                content = ft.Row(
-                    [
-                        # Imagem fica à esquerda
-                        ft.Image(
-                            src = f"https://image.tmdb.org/t/p/w300{dados['imagem']}",
-                            width = 200,
-                            height = 300,
-                            fit = ft.ImageFit.COVER,
-                            border_radius = 20,
-                        ),
-                        ft.Column(
-                            [
-                                ft.Text(dados['titulo'], size = 25, weight = "bold", selectable = True),
-                                ft.Text(dados['avaliacao'], size = 15, color = "green", selectable = True),
-                                ft.Text(dados['sinopse'], size = 15, selectable = True),
-                                botao_selecionar
-                            ],
-                            spacing = 10,
-                            alignment = "start",
-                            expand = True,
-                        ),
-                    ],
-                    spacing = 20,
-                    alignment = 'start',
+            film_img = ft.BoxDecoration(
+                image=ft.DecorationImage(
+                    src=f"https://image.tmdb.org/t/p/w300{dados["capa_fundo"]}",
+                    fit=ft.ImageFit.COVER,
+                    opacity=0.05,
                 ),
-                padding = 10,
-                bgcolor = "#1F2326",
-                border_radius = 20,
-                width = page.width * 0.85,
+                border_radius=10,
+            )
+
+            lista = ft.Card(
+                content = ft.Container(
+                    content = ft.Row(
+                        [
+                            # Imagem fica à esquerda
+                            ft.Image(
+                                src = f"https://image.tmdb.org/t/p/w300{dados['poster']}",
+                                width = 150,
+                                height = 200,
+                                fit = ft.ImageFit.COVER,
+                                border_radius = 20,
+                            ),
+                            ft.Column(
+                                [
+                                    ft.Text(dados['titulo'], size = 25, weight = "bold", selectable = True),
+                                    ft.Text(dados['avaliacao'], size = 15, color = "green", selectable = True),
+                                    ft.Text(dados['sinopse'], size = 15, selectable = True),
+                                    botao_selecionar
+                                ],
+                                spacing = 10,
+                                alignment = "start",
+                                expand = True,
+                            ),
+                        ],
+                        spacing = 20,
+                        alignment = 'start',
+                    ),
+                    padding = 10,
+                    foreground_decoration=film_img,
+                    bgcolor = ft.Colors.with_opacity(0.0, "#1F2326"),
+                    border_radius = 20,
+                    width = page.width * 0.85,
+                ),
+                elevation = 6,
             )
             container_lista.controls.append(lista)
             container_lista.update()
 
-    # Variaveis extras
-    filmes_selecionados = []
+    with open("base/filmes.json", 'r', encoding='UTF-8') as file:
+        try:
+            filmes = json.load(file)
+        finally:
+            print(f"Filmes recuperados: {filmes}")
 
     page.title = "Pesquisar Filmes"
 
@@ -105,6 +133,7 @@ def tela_pesquisa(page: ft.Page):
         filled = True,
         color = "black",
     )
+
     btn_pesquisa = ft.ElevatedButton(
         text = "Pesquisar",
         on_click = button_search,
@@ -166,5 +195,5 @@ def tela_pesquisa(page: ft.Page):
         horizontal_alignment = "center",
         scroll = "auto",
         decoration = bg_img,
-        bgcolor = ft.Colors.with_opacity(0.8, "black")
+        bgcolor = ft.Colors.with_opacity(0.4, "grey")
     )
