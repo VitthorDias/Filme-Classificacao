@@ -1,8 +1,7 @@
 /.venv
 /.idea
 /__pycache__
-/testes_tela.py
-/teste_tela_main.py
+/testes.py
 /config.ini
-/testes_tela_main1.py
 /imagens/Seleção
+/base/teste.json

@@ -3,6 +3,11 @@ from main import pesquisa_tmdb
 import json
 
 def tela_pesquisa(page: ft.Page):
+    def ordenar_filmes():
+        with open("base/filmes.json", "rw+", encoding='utf-8') as file:
+            pass
+
+
     # Função para selecionar o(s) filme(s) escolhidos
     def button_select(dados):
         filmes_selec = {}
@@ -10,11 +15,10 @@ def tela_pesquisa(page: ft.Page):
             if chave != "id":
                 filmes_selec[chave] = valor
         filmes[dados["id"]] = filmes_selec
-        filmes_json = json.dumps(filmes, indent=True, ensure_ascii=False)
+        filmes_json = json.dumps(filmes, indent=4, ensure_ascii=False)
 
         with open("base/filmes.json", "w+", encoding='utf-8') as file:
             file.write(filmes_json)
-
 
     # Cria os containers com os resultados da pesquisa dos filmes 
     def button_search(e):
@@ -107,6 +111,8 @@ def tela_pesquisa(page: ft.Page):
 
     page.title = "Pesquisar Filmes"
 
+    # --------------------------------------------------------
+    # Componentes do header
     # Título
     titulo = ft.Text("PESQUISAR FILME",
                      size = 30,

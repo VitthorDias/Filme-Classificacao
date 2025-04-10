@@ -51,8 +51,9 @@ def busca(search = '', auth = ''):
                 "classificacao": classificacao,
                 "generos": generos,
                 "lancamento": item.get("release_date", ""),
-                "avaliacao": f"{item.get("vote_average", 0)*10:.2f}%",
-                "sinopse": item.get("overview", "")
+                "avaliacao": item.get("vote_average", 0)*10,
+                "sinopse": item.get("overview", ""),
+                "assistido": "não"
             }
         }
         results.append(result)

@@ -1,28 +1,32 @@
 {
- "346364": {
-  "titulo": "It: A Coisa",
-  "poster": "/uYxz0lIiNgErrPhQbSjUdwYxtFc.jpg",
-  "capa_fundo": "/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
-  "classificacao": "16",
-  "generos": [
-   "Terror",
-   "Thriller"
-  ],
-  "lancamento": "2017-09-06",
-  "avaliacao": "72.39%",
-  "sinopse": "Na cidade de Derry, no Maine, sete jovens se juntam para combater uma criatura sobrenatural que está assombrando a sua cidade por séculos. Chamado de Pennywise – O Palhaço Dançarino, a Coisa é um monstro de força absoluta que toma a forma dos medos mais horrorosos das pessoas. Ameaçados por seus piores pesadelos, a única maneira dos jovens amigos sobreviverem à Coisa é se continuarem juntos."
- },
- "1134433": {
-  "titulo": "Quando a Morte Sussurra",
-  "poster": "/z9GjAzLasH7ODs8p0XVvrkeorSW.jpg",
-  "capa_fundo": "/55hRgXkbvHoc9dL58S9HAGyxmZt.jpg",
-  "classificacao": "",
-  "generos": [
-   "Terror",
-   "Thriller"
-  ],
-  "lancamento": "2023-10-25",
-  "avaliacao": "75.05%",
-  "sinopse": "Em uma aldeia remota, um espírito sanguinário entra no corpo de uma jovem, e seu irmão mais velho lidera os esforços para detê-lo antes que ela seja consumida pelo mal."
- }
+    "950387": {
+        "titulo": "Um Filme Minecraft",
+        "poster": "/4VtkIaj76TpQNfhDHXQDdT9uBN5.jpg",
+        "capa_fundo": "/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg",
+        "classificacao": "10",
+        "generos": [
+            "Família",
+            "Comédia",
+            "Aventura",
+            "Fantasia"
+        ],
+        "lancamento": "2025-03-31",
+        "avaliacao": 61.41,
+        "sinopse": "Quatro desajustados enfrentam problemas comuns do dia a dia quando, de repente, são sugados por um portal misterioso para o Overworld: uma terra fascinante e cúbica, movida pela imaginação. Para voltarem para casa, eles precisarão dominar esse novo mundo enquanto embarcam em uma jornada mágica ao lado de um crafter experiente e inesperado: Steve.",
+        "assistido": "não"
+    },
+    "346364": {
+        "titulo": "It: A Coisa",
+        "poster": "/uYxz0lIiNgErrPhQbSjUdwYxtFc.jpg",
+        "capa_fundo": "/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
+        "classificacao": "16",
+        "generos": [
+            "Terror",
+            "Thriller"
+        ],
+        "lancamento": "2017-09-06",
+        "avaliacao": 72.39,
+        "sinopse": "Na cidade de Derry, no Maine, sete jovens se juntam para combater uma criatura sobrenatural que está assombrando a sua cidade por séculos. Chamado de Pennywise – O Palhaço Dançarino, a Coisa é um monstro de força absoluta que toma a forma dos medos mais horrorosos das pessoas. Ameaçados por seus piores pesadelos, a única maneira dos jovens amigos sobreviverem à Coisa é se continuarem juntos.",
+        "assistido": "não"
+    }
 }
