@@ -1,9 +1,14 @@
 import configparser
 import search
-import testes_tela
+import search_platform
 
 def pesquisa_tmdb(text = ""):
     response = search.busca(text, autorizacao)
+
+    return response
+
+def pesquisa_plataforma(id = int):
+    response = search_platform.plataformas(id, autorizacao)
 
     return response
 

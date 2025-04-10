@@ -1,6 +1,15 @@
 import flet as ft
+from main import pesquisa_plataforma
+import json
 
 def tela_lista(page: ft.Page):
+    # Ler o arquivos com os filmes
+    with open("base/filmes.json", 'r', encoding = 'UTF-8') as file:
+       try:
+           filmes = json.load(file)
+       finally:
+            print(f"Filmes recuperados{filmes}")
+    
     bg_containers = "#1F2326"
 
     # 👉 Define o background apenas nesta tela
@@ -15,29 +24,64 @@ def tela_lista(page: ft.Page):
     page.window.always_on_top = True
     page.title = "Lista de Filmes"
 
-    container_opcao2 = ft.Container(
-        content=ft.Text(
+    # Container header
+    # Titulo
+    titulo = ft.Text(
             "LISTA DE FILMES ADICIONADOS",
-            size=18,
-            text_align="center",
-            color="white"
-        ),
-        border_radius=10,
-        bgcolor=bg_containers,
-        padding=20,
-        width=page.width * 0.8,
-        height=300,
-        ink=True,
-        on_click=lambda e: page.go("/"),
-        alignment=ft.alignment.center
+            size = 30,
+            weight = "bold",
+            text_align = "center",
+            color = "white"
+        )
+    
+    container_titulo = ft.Container(
+        content = titulo,
+        alignment = ft.alignment.top_center,
+        padding = ft.padding.only(top = 20)
     )
+    
+    # Menu
+    menu_popup = ft.PopupMenuButton(
+        items = [
+            ft.PopupMenuItem(
+                icon = ft.Icons.ARROW_BACK,
+                text = "Voltar",
+                on_click = lambda e: page.go("/"),
+            ),
+            ft.PopupMenuItem(
+                icon = ft.Icons.SCREEN_SEARCH_DESKTOP_OUTLINED,
+                text = "Pesquisar",
+                on_click = lambda e: page.go("/pesquisar"),
+            )
+        ],
+        icon = ft.Icons.MENU,
+    )
+
+    container_menu = ft.Container(
+        content = menu_popup,
+        alignment = ft.alignment.top_right,
+        padding = ft.padding.only(top = 20, left = 20)
+    )
+
+    # Juntando titulo e o menu
+    header = ft.Stack(
+        controls = [
+            container_titulo,
+            container_menu
+        ],
+        width = page.width,
+    )
+
+    # Container principal
+    # Junta todos containeirs
+    
 
     return ft.View(
         route="/lista",
-        controls=[container_opcao2],
+        controls=[header],
         scroll=ft.ScrollMode.AUTO,
         vertical_alignment=ft.MainAxisAlignment.CENTER,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-        bgcolor = ft.Colors.with_opacity(0.3, "black"),
+        bgcolor = ft.Colors.with_opacity(0.7, "black"),
         decoration = page.decoration
     )

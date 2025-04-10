@@ -43,6 +43,13 @@ def tela_pesquisa(page: ft.Page):
                 border_radius=10,
             )
 
+            container_classificacao = ft.Container(
+                content = ft.Text(dados["classificacao"], size = 14),
+                padding=ft.padding.symmetric(horizontal=6, vertical=2),
+                border=ft.border.all(1, "white"),
+                margin=ft.margin.only(right=5, top=-3),
+            )
+
             lista = ft.Card(
                 content = ft.Container(
                     content = ft.Row(
@@ -57,7 +64,18 @@ def tela_pesquisa(page: ft.Page):
                             ),
                             ft.Column(
                                 [
-                                    ft.Text(dados['titulo'], size = 25, weight = "bold", selectable = True),
+                                    ft.Row(
+                                        [
+                                            ft.Text(dados['titulo'], size = 25, weight = "bold", selectable = True),
+                                            ft.Text(f"({dados["lancamento"].split("-")[0]})", size = 12, selectable = True)
+                                        ],
+                                    ),
+                                    ft.Row(
+                                        [
+                                            container_classificacao,
+                                            ft.Text(", ".join(dados["generos"]), size = 15, selectable = True, italic = True),
+                                        ],
+                                    ),
                                     ft.Text(dados['avaliacao'], size = 15, color = "green", selectable = True),
                                     ft.Text(dados['sinopse'], size = 15, selectable = True),
                                     botao_selecionar
@@ -103,7 +121,7 @@ def tela_pesquisa(page: ft.Page):
         padding = ft.padding.only(top=20),
     )
 
-# PopupMenu
+    # PopupMenu
     menu_popup = ft.PopupMenuButton(
         items = [
             ft.PopupMenuItem(
@@ -111,6 +129,11 @@ def tela_pesquisa(page: ft.Page):
                 text = "Voltar",
                 on_click = lambda _: page.go("/"),
             ),
+            ft.PopupMenuItem(
+                icon = ft.Icons.FEATURED_PLAY_LIST_OUTLINED,
+                text = "Adicionados",
+                on_click = lambda e: page.go("/lista"),
+            )
             #ft.PopupMenuItem(icon = ft.Icons.MENU, text="Teste"),
         ],
         icon = ft.Icons.MENU,
@@ -195,5 +218,5 @@ def tela_pesquisa(page: ft.Page):
         horizontal_alignment = "center",
         scroll = "auto",
         decoration = bg_img,
-        bgcolor = ft.Colors.with_opacity(0.4, "grey")
+        bgcolor = ft.Colors.with_opacity(0.7, "black")
     )
